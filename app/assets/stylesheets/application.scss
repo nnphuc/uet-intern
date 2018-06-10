@@ -1,0 +1,77 @@
+/*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require font-awesome
+*= require_tree .
+*= require_self
+*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+    font-size: 13px;
+    background-color: #ECEAE6;
+    height:100%;
+}
+
+#header nav li > a,.menu  li a {
+    text-transform: uppercase;
+    color:#1b77ad;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+
+#header > nav{
+    margin:0 !important;
+    background-color: #fff;
+}
+
+
+#header a:hover,a:active,a.active, .menu li a:hover{
+    color:#bdd843;
+}
+#header li.active a {
+    color:#bdd843;
+    background-color: #fff;
+}
+
+#header .vertical-split {
+    display: inline-block;
+    border-right: 1px solid #1b77ad;
+}
+
+.extra-menu {
+    color:#1b77ad;
+    font-size: 12px;
+}
+
+.round-button {
+    background-color: #ccc;
+    border-radius: 24px;
+    display: inline-block;
+    padding: 5px;
+    margin: auto;
+}
+
+
+#footer{
+   
+    background-color:#BBE7F9;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6em;
+    padding: 10px 0 0;
+    margin: 50px 0 0 0;
+    color: #bbb;
+    background: url( "header-pattern-150.png" ) repeat;
+}
+
