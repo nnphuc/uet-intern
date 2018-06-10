@@ -1,0 +1,13 @@
+<div class="container">
+<h1>Cap nhat tai khoan</h1>
+<% if current_user.has_role? :student %>
+  <%= render "update_info_student" %>
+<% elsif current_user.has_role? :lecturer %>
+  <%= render "update_info_lecturer" %>
+<% elsif current_user.has_role? :partner %>
+  <%= render "update_info_partner" %>
+<% elsif current_user.has_role? :admin %>
+
+<% end %>
+
+</div>

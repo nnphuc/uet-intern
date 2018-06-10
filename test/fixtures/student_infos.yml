@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  emailcanhan: MyString
+  skypeid: MyString
+  facebook: MyString
+  dienthoai: MyString
+  vitricanbo: MyString
+  ngoaingu: MyString
+  chungchi: MyString
+  kinhnghiem: MyString
+  mongmuon: MyString
+  ghichu: MyString
+  user_id: 1
+
+two:
+  emailcanhan: MyString
+  skypeid: MyString
+  facebook: MyString
+  dienthoai: MyString
+  vitricanbo: MyString
+  ngoaingu: MyString
+  chungchi: MyString
+  kinhnghiem: MyString
+  mongmuon: MyString
+  ghichu: MyString
+  user_id: 1

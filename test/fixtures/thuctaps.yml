@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partner_id: 1
+  title: MyString
+  content: MyString
+  address: MyString
+  tag: MyString
+  endtime: 2018-06-10 15:32:39
+
+two:
+  partner_id: 1
+  title: MyString
+  content: MyString
+  address: MyString
+  tag: MyString
+  endtime: 2018-06-10 15:32:39

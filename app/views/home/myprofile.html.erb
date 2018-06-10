@@ -1,0 +1,10 @@
+<% if current_user.has_role? :student %>
+    <%= render "profile_student" %>
+<%elsif current_user.has_role? :lecturer %>
+    <%= render "profile_lecturer" %>
+<% elsif current_user.has_role? :partner %>
+    <%= render "profile_partner" %>
+
+<%elsif current_user.has_role? :admin %>
+
+<% end %>

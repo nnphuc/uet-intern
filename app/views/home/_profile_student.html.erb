@@ -1,0 +1,90 @@
+<div class="container">
+<% if current_user %>
+
+
+    <% if current_user.student_info %>
+    <% info = current_user.student_info %>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        
+         <%= image_tag(current_user.student_info.avatar.url(:medium)) %> 
+       
+        <div class="hr-text">
+            <span>WORK</span>
+        </div>
+        <address>
+            <a href="mailto:<%=info.emailcanhan%>" ></a><%= current_user.student_fixed_info.hoten %><br>
+            Visit us at:<br>
+            <%= current_user.student_fixed_info.diachi%><br>
+            
+        </address> 
+
+        <div class="hr-text">
+                <span>SKILLS</span>
+        </div>
+        <ul class="list-unstyled">
+            <li>kinh nghiem: <%= info.kinhnghiem %></li>
+            <li>ngoai ngu: <%= info.ngoaingu %></li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+           
+           <div>
+               <h3><%= current_user.student_fixed_info.hoten %></h3>
+               <address>
+                    <span class="glyphicon glyphicon-map-marker">
+                    </span><%= current_user.student_fixed_info.diachi %><br>
+               </address>
+           </div>
+           <div class="">
+               
+           </div>
+           <hr class="opacity-75"/>
+
+           <div class="opacity-75 upcase text-small">Contact information</div>
+           <address>
+            <div class="wrapper-information">
+                <strong>Phone: </strong>
+                <span><%= info.dienthoai %></span>
+            </div>
+            <div class="wrapper-information">
+               <strong>Email: </strong>
+               <span><%= info.emailcanhan%></span>
+            </div>
+             <div class="wrapper-information">
+               <strong>Skype: </strong>
+               <span><%= info.skypeid%></span>
+            </div>
+            <div class="wrapper-information">
+               <strong>Facebook: </strong>
+               <span><%= info.facebook%></span>
+            </div>
+           
+           </address>
+           <hr class="opacity-75"/>
+           <div class="opacity-75 upcase text-small">base information</div>
+           
+          
+            <div class="wrapper-information">
+               <strong>Lop: </strong>
+               <span><%= current_user.student_fixed_info.lop %></span>
+            </div>
+            <div class="wrapper-information">
+               <strong>Khoa: </strong>
+               <span><%= current_user.student_fixed_info.khoa %></span>
+            </div>
+            <div class="wrapper-information">
+               <strong>Nganh: </strong>
+               <span><%= current_user.student_fixed_info.nganh %></span>
+            </div>
+           
+
+    </div>
+    <% else %>
+        <h3> vui long them thong tin tai khoan</h3>
+    <% end %>
+
+
+<% else %>
+
+<% end %>
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  msv: 1
+  lop: MyString
+  khoa: MyString
+  nganh: MyString
+  diachi: MyString
+  hoten: MyString
+  diemtb: 1.5
+  namtotnghiep: 2018-06-09
+
+two:
+  msv: 1
+  lop: MyString
+  khoa: MyString
+  nganh: MyString
+  diachi: MyString
+  hoten: MyString
+  diemtb: 1.5
+  namtotnghiep: 2018-06-09
