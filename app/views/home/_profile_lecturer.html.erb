@@ -1,9 +1,9 @@
 <div class="container">
-<% if current_user %>
+<% if user %>
 
 
-    <% if current_user.lecturer_info %>
-    <% info = current_user.lecturer_info %>
+    <% if user.lecturer_info %>
+    <% info = user.lecturer_info %>
     <div class="col-sm-4 col-md-4 col-lg-4">
         
          <%= image_tag(info.avatar.url(:medium)) %> 
@@ -18,7 +18,7 @@
             <span>WORK</span>
         </div>
         <address>
-            <strong>Email: <strong><a href="mailto:<%=current_user.email%>" ></a><%= current_user.email %><br>
+            <strong>Email: <strong><a href="mailto:<%=user.email%>" ></a><%= user.email %><br>
            
         </address> 
 

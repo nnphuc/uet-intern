@@ -1,54 +1,53 @@
 
-<%= form_for(@thuctap) do |f| %>
-  
-  <div class="form-inputs">
+        
+
+
+<div class="row">
+
+<div class="col-md-8 col-md-offset-2">
     
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">title:</label>
-      <div class="col-sm-10">
-        
-        <%= f.text_field :title,type: "text", class:"form-control",placeholder: "full name" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">content:</label>
-      <div class="col-sm-10">
-        
-        <%= f.text_field :content,type: "text", class:"form-control",placeholder: "full name" %>
-      </div>
-    </div>
-        
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">address:</label>
-      <div class="col-sm-10">
-        
-        <%= f.text_field :address,type: "text", class:"form-control",placeholder: "full name" %>
-      </div>
-    </div>
-   <div class="form-group">
-      <label class="control-label col-sm-2" for="email">tag:</label>
-      <div class="col-sm-10">
-        
-        <%= f.text_field :tag,type: "text", class:"form-control",placeholder: "full name" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">endtime:</label>
-      <div class="col-sm-10">
-        
-        <%= f.datetime_select :endtime %>
-      </div>
-    </div>
+    <h1>Create post</h1>
     
-  </div>
-
-  <div class="form-group">
-      
-      <div class="col-sm-10 col-sm-offset-2">
+    <%= form_for(@thuctap) do |f| %>
         
-        <%= f.button :submit %>
+        <%= f.hidden_field :partner_info_id , value: current_user.partner_info.id  %>
+        <div class="form-group ">
+            <%= f.label :title %>
+            <%= f.text_field :title,type: "text", class:"form-control",placeholder: "title" %>
+        </div>
+        
+        <div class="form-group ">
+            <%=f.label :address %>
+            <%= f.text_field :address,type: "text", class:"form-control",placeholder: "address" %>
+    
+        </div>
 
-      </div>
-    </div>
-<% end %>
+        <div class="form-group ">
+            <%=f.label :tag %>
+            <%= f.text_field :tag,type: "text", class:"form-control",placeholder: "tags" %>
+           
+        </div>
+        
+        <div class="form-group">
+            <%=f.label :content%>
+            <%= f.text_area :content,rows:5,type: "text", class:"form-control",placeholder: "content" %>
+        </div>
+        <!--
+        <div class="form-group">
+            <p><span class="require">*</span> - required fields</p>
+        </div>
+        -->
+        <div class="form-group">
+                <%= f.datetime_select :endtime, default: 10.days.from_now,discard_hour: true %>
+        </div>
+
+        
+        <div class="form-group">
+            <%= f.button :submit %>
+           
+        </div>
+        
+    <% end %>
+</div>
+
+</div>

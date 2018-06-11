@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get "/congviec", to:"home#congviec"
   get "/thongbao", to:"home#thongbao"
   get "/myprofile",to: "home#myprofile"
-
+  
+  get "/partner/:id/thuctap", to: "partner/thuctap#index"
+  
+  get "/:role/:id/profile", to: "home#viewprofile"
+  
   resources :home do
     post :update, :on => :collection
   end

@@ -15,3 +15,16 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+
+function hightlight_active( ) {
+    var loc = window.location.pathname;
+    $("#header-type-option li a").click(function(e){
+        $("#header-type-select").html($(this).text()+' <span class="caret"> </span>');
+    })
+    $('#menu-extra').find('a').each(function() {
+        $(this).parent().toggleClass('active', $(this).attr('href') == loc);
+    });
+}
+
+$(document).ready(hightlight_active);
+$(document).on('turbolinks:load',hightlight_active);

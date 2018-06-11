@@ -1,2 +1,3 @@
 module ThuctapsHelper
+
 end

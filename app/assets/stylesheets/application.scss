@@ -16,12 +16,13 @@
 @import "font-awesome";
 
 body {
-    font-size: 13px;
-    background-color: #ECEAE6;
+    font-size: 14px;
+   
     height:100%;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
-#header nav li > a,.menu  li a {
+#menu-extra  li > a,.menu  li a {
     text-transform: uppercase;
     color:#1b77ad;
     font-size: 12px;
@@ -29,38 +30,91 @@ body {
 }
 
 
-#header > nav{
-    margin:0 !important;
-    background-color: #fff;
-}
 
-
-#header a:hover,a:active,a.active, .menu li a:hover{
-    color:#bdd843;
-}
-#header li.active a {
-    color:#bdd843;
-    background-color: #fff;
-}
-
-#header .vertical-split {
-    display: inline-block;
-    border-right: 1px solid #1b77ad;
-}
-
-.extra-menu {
+#footer a,#footer a:active,#footer a:visited {
+   
     color:#1b77ad;
     font-size: 12px;
+    font-weight: bolder;
+}
+#footer a:hover {
+    text-decoration: none;
+    color: #bdd843;
+    background-color: transparent;
 }
 
-.round-button {
-    background-color: #ccc;
-    border-radius: 24px;
-    display: inline-block;
-    padding: 5px;
-    margin: auto;
+
+#navbar-right a,#navbar-right a:active,#navbar-right a:visited {
+   
+    color:#1b77ad;
+    font-size: 12px;
+    font-weight: bolder;
+}
+#navbar-right a:hover {
+    text-decoration: none;
+    color: #C45F5F;
+    background-color: transparent;
 }
 
+
+
+#menu-extra {
+    margin:0 !important;
+}
+
+#navbar-header  .navbar-brand {
+    color: white;
+}
+
+#menu-extra a:hover,a:active,a.active, .menu li a:hover{
+    color:#bdd843;
+}
+#menu-extra li.active a {
+    color:#bdd843;
+    background-color: #fff;
+}
+
+a,a:active,a:link,a:visited {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none;
+    color: #4267B2;
+}
+a:hover {
+    color:#E77C26;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
+
+#navbar-right  li.dropdown.open  li  a:hover {
+    color: white;
+    background-color:#4267B2;
+    background-image: none;
+}
+
+#navbar-right > li{
+    & > a, &>a:link,&>a:visited {
+        color: white;
+        background: transparent;
+    }
+    & >a.avatar-wrapper {
+        padding: 10px;
+    }
+    &> a:hover,&a:active {
+        color:#E77C26;;
+    }
+} 
+
+
+#navbar-right .avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
 #footer{
    
@@ -75,3 +129,6 @@ body {
     background: url( "header-pattern-150.png" ) repeat;
 }
 
+#navbar-header{
+   background-color:#004680;
+}

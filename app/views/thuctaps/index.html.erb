@@ -1,52 +1,8 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
 
-    <% @thuctaps.each do |thuctap| %>
-    <div class="row"> 
-    <div class="col-xs-12 col-sm-3 col-md-3">
-        <a href="<%= thuctap_path(thuctap) %>">
-            <image src="<%=thuctap.partner_info.logo.url(:medium)%>" style="max-width: 250px"  %>
-        </a>
-    </div> 
-    <div class="col-xs-12 col-sm-9 col-md-9">
-        
-        <h4><a href="#"><%= thuctap.title %></a></h4>
-        <p><%= thuctap.content %></p>
-        <div class="list-group">
-                <div class="list-group-item">
-                    
-                    <div class="row-content">
-                        <div class="list-group-item-heading">
-                            <a href="#" title="<%=thuctap.partner_info.name%>">
-                                <small><%=thuctap.partner_info.name %></small>
-                            </a>
-                            <small>
-                                    <i class="glyphicon glyphicon-time"></i> 3 days ago </span>
-                                    <br>
-                            </small>
-                        </div>
-                    </div>
-                    <ul class="list-unstyled list-inline">
-                        <li><a href="#"><i class="glyphicon glyphicon-bookmark"></i> <%= thuctap.tag|| "thuc tap" %></a></li>
-                        <li><i class="glyphicon glyphicon-calendar"></i><%= thuctap.endtime.strftime("%b %d,%Y %H:%M") %></li>
-                        
-                    </ul>
-                    <%= link_to "edit", edit_thuctap_path(thuctap) %>
-                </div>
-                
-            </div>
-    </div> 
-
-</div>    
- <!--     
-        <td><%= link_to 'Show', thuctap %></td>
-        <td><%= link_to 'Edit', edit_thuctap_path(thuctap) %></td>
-        <td><%= link_to 'Destroy', thuctap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
---> 
-    <% end %>
-
-
-<%= link_to 'New Thuctap', new_thuctap_path %>
+<%= render partial: "list_element", collection: @thuctaps, as: :thuctap %>
+<div class="text-center">
+    <%= paginate(@thuctaps)  %>
+</div>
 
 </div>

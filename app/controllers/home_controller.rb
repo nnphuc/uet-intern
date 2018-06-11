@@ -23,6 +23,18 @@ class HomeController < ApplicationController
 
   end
 
+  def viewprofile
+
+    @user = User.find_by id:params[:id]
+    s = params[:role].to_sym
+    
+    if @user.nil? || !(@user.has_role? s) then
+        render "/error/not_found"
+    end
+
+
+  end
+
 
 
   def update_info
@@ -81,5 +93,8 @@ class HomeController < ApplicationController
   def partner_info_params
     params.require(:partner_info).permit(:logo,:diachi,:dienthoai)
   end
+
+
+  
 
 end

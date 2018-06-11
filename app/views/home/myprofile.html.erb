@@ -1,9 +1,9 @@
 <% if current_user.has_role? :student %>
-    <%= render "profile_student" %>
+    <%= render :partial => "/home/profile_student",locals: {:user => current_user} %>
 <%elsif current_user.has_role? :lecturer %>
-    <%= render "profile_lecturer" %>
+    <%= render :partial => "/home/profile_lecturer",locals: {:user => current_user} %>
 <% elsif current_user.has_role? :partner %>
-    <%= render "profile_partner" %>
+    <%= render :partial => "/home/profile_partner",locals: {:user => current_user} %>
 
 <%elsif current_user.has_role? :admin %>
 
