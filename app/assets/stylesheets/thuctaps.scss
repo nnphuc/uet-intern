@@ -6,3 +6,19 @@
 .tin-thuc-tap:nth-last-of-type(odd) {
     background-color: #ECEAE6;
 }
+
+.post-logo {
+    max-width: 150px;
+    max-height: 100px;
+    display: inline-block;
+}
+.post-logo-wrapper {
+    height: 180px;
+    text-align: center;
+}
+.post-logo-wrapper:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 30%;
+}

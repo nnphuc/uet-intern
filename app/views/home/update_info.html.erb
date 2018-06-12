@@ -1,5 +1,6 @@
-<div class="container">
-<h1>Cap nhat tai khoan</h1>
+
+<h1 class="text-primary text-center">cap nhat thong tin</h1>
+<br>
 <% if current_user.has_role? :student %>
   <%= render "update_info_student" %>
 <% elsif current_user.has_role? :lecturer %>
@@ -9,5 +10,3 @@
 <% elsif current_user.has_role? :admin %>
 
 <% end %>
-
-</div>

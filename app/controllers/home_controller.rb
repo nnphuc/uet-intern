@@ -16,18 +16,16 @@ class HomeController < ApplicationController
   def congviec
   end
 
-  def thuctap
-  end
-
   def myprofile
-
+    unless current_user
+        redirect_to root_path
+    end
   end
 
   def viewprofile
 
     @user = User.find_by id:params[:id]
     s = params[:role].to_sym
-    
     if @user.nil? || !(@user.has_role? s) then
         render "/error/not_found"
     end
@@ -39,11 +37,11 @@ class HomeController < ApplicationController
 
   def update_info
     if current_user.has_role? :student
-      @info = StudentInfo.new
+      @info = current_user.student_info||StudentInfo.new
     elsif current_user.has_role? :lecturer
-      @info = LecturerInfo.new
+      @info = current_user.lecturer_info||LecturerInfo.new
     elsif current_user.has_role? :partner
-      @info = PartnerInfo.new
+      @info = current_user.partner_info||PartnerInfo.new
     elsif current_user.has_role? :admin
     end
 

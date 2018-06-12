@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :follows,only: [:create, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :thuctaps, path: "thuctap"
   get "/update_info", to:"home#update_info"
@@ -17,9 +18,18 @@ Rails.application.routes.draw do
   get "/:role/:id/profile", to: "home#viewprofile"
   
   resources :home do
+    patch :update, :on => :collection
     post :update, :on => :collection
   end
 
-  devise_for :users
+ 
+    devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
+    }
+
+
+  devise_for :users,skip: [:sessions,:registrations]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -33,7 +33,7 @@
                 <% end %>
                
                 <% else %>
-                 <a href="<%= user_session_path %>">
+                 <a href="/dangnhap">
                     <ul class="list-unstyled list-inline">
                         <li>
                             <span class="glyphicon glyphicon-log-in"></span>
@@ -52,7 +52,7 @@
 
     <!--  navbar sticky -->
 
-    <nav class="navbar navbar-default" id="navbar-header" style="position: sticky;top:0;z-index: 9999;" role="navigation">
+    <nav class="navbar navbar-default sticky" id="navbar-header" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -124,7 +124,29 @@
         <!-- /.container-fluid -->
     </nav>
     <!-- end navbar sticky --> 
-    <%= yield %>
+    <% if user_signed_in?  && !current_user.updated%>
+        <div class="alert alert-warning text-center" role="alert">
+            Ban chua thay doi mat khau, nhan vao <a href="<%=edit_user_registration_path%>"> day</a> thay thoi
+        </div>
+    <% end %>
+    <div class="container" id="page-content">
+     
+        <div class="col-md-9">
+        <%= yield %>
+        </div>
+        <div class="col-md-3 fixed-bar-right bg-2">
+            <span  class="btn btn-sucess ">HTML</span>
+            <span class="btn btn-sucess">CSS</span>
+            <span  class="btn btn-sucess">JS</span>
+            <span  class="btn btn-sucess ">C</span>
+            <span class="btn btn-sucess">Rails</span>
+            <span class="btn btn-sucess ">Nodejs</span>
+            <span  class="btn btn-sucess ">Python</span>
+            <span  class="btn btn-sucess">ruby</span>
+
+        </div>
+    </div>
+       
 
     <!-- footer start ---------------------------------->
 

@@ -7,12 +7,12 @@
 %>
 
 <div class="row list-group-item tin-thuc-tap"> 
-    <div class="col-xs-12 col-sm-3 col-md-3">
+    <div class="col-xs-12  col-md-3 post-logo-wrapper">
         <a href="<%= thuctap_path(thuctap) %>">
-            <image src="<%=thuctap.partner_info.logo.url(:medium)%>" style="max-width: 250px" title="<%=thuctap.partner_info.name %>" >
+            <image src="<%=thuctap.partner_info.logo.url(:medium)%>" class="post-logo" title="<%=thuctap.partner_info.name %>" >
         </a>
     </div> 
-    <div class="col-xs-12 col-sm-9 col-md-9">
+    <div class="col-xs-12 col-md-9">
         
         <h4><a href="<%=url%>" title="<%=title%>"><%= thuctap.title %></a></h4>
         <p>

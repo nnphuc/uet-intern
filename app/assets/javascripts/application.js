@@ -13,9 +13,26 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery
+//= require jquery3
+//= require popper
 //= require bootstrap-sprockets
 
+
+function sticky_header() {
+    var scrollPosition = $(this).scrollTop();
+    var el = $("#navbar-header");
+    var next = el.next();
+    if (scrollPosition >= 50) {
+        $("#navbar-header").removeClass("sticky");
+        $("#navbar-header").addClass("fixed");
+        next.addClass("mt-50");
+    }else{
+        $("#navbar-header").removeClass("fixed");
+        $("#navbar-header").addClass("sticky");
+        next.removeClass("mt-50");
+    }
+}
+$(window).on('scroll', sticky_header);
 function hightlight_active( ) {
     var loc = window.location.pathname;
     $("#header-type-option li a").click(function(e){
@@ -25,6 +42,7 @@ function hightlight_active( ) {
         $(this).parent().toggleClass('active', $(this).attr('href') == loc);
     });
 }
+
 
 $(document).ready(hightlight_active);
 $(document).on('turbolinks:load',hightlight_active);

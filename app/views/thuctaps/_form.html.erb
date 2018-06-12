@@ -6,8 +6,6 @@
 
 <div class="col-md-8 col-md-offset-2">
     
-    <h1>Create post</h1>
-    
     <%= form_for(@thuctap) do |f| %>
         
         <%= f.hidden_field :partner_info_id , value: current_user.partner_info.id  %>

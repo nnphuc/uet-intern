@@ -1,10 +1,10 @@
-<div class="container">
+
 <% if current_user %>
 
 
     <% if current_user.student_info %>
     <% info = current_user.student_info %>
-    <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="col-sm-6 col-md-6 col-lg-6">
         
          <%= image_tag(current_user.student_info.avatar.url(:medium)) %> 
        
@@ -21,10 +21,13 @@
         <div class="hr-text">
                 <span>SKILLS</span>
         </div>
-        <ul class="list-unstyled">
-            <li>kinh nghiem: <%= info.kinhnghiem %></li>
-            <li>ngoai ngu: <%= info.ngoaingu %></li>
+        <address>
+            <ul class="list-unstyled">
+            <li><strong>kinh nghiem:</strong> <%= info.kinhnghiem %></li>
+            <li><strong>ngoai ngu:</strong> <%= info.ngoaingu %></li>
         </ul>
+        </address> 
+        
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6">
            
@@ -87,4 +90,4 @@
 <% else %>
 
 <% end %>
-</div>
+
