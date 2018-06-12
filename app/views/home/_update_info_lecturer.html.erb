@@ -1,0 +1,72 @@
+<%= form_for @info,url: {:action => "update" } do |f| %>
+ 
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Hoten:</label>
+      <div class="col-sm-10">
+        
+        <%= f.text_field :hoten,type: "email", class:"form-control",placeholder: "full name" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Khoa:</label>
+      <div class="col-sm-10">
+        
+        <%= f.text_field :khoa,type: "email", class:"form-control",placeholder: "khoa" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Dia chi:</label>
+      <div class="col-sm-10">
+        
+        <%= f.text_field :gmail,type: "email", class:"form-control",placeholder: "Dia chi" %>
+      </div>
+    </div>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Gmail:</label>
+      <div class="col-sm-10">
+        
+        <%= f.email_field :gmail,type: "email", class:"form-control",placeholder: "Enter email" %>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Dien Thoai:</label>
+      <div class="col-sm-10">
+        
+        <%= f.text_field :dienthoai,type: "text", class:"form-control",placeholder: "Enter phone number" %>
+      </div>
+    </div>
+
+   
+
+ 
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">ghi chu:</label>
+      <div class="col-sm-10">
+        
+        <%= f.text_field :ghichu,type: "text", class:"form-control",placeholder: "ghi chu" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">avatar:</label>
+      <div class="col-sm-10">
+        
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+    <div class="form-group">
+      
+      <div class="col-sm-10 col-sm-offset-2">
+        
+        <%= f.button :submit %>
+
+      </div>
+    </div>
+
+
+<%end%>
