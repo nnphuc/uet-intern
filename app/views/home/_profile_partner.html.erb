@@ -14,7 +14,21 @@
                     <strong>email: </strong><span><%= info.contact%></span>
                 </address>
                 
-                <%= render "/users/follow_form" %> 
+                <% if current_user %>
+                    <% is_following = current_user.following? user %>
+                    <div class="ajax-button" id="follow-ajax">
+                        <input type="hidden" name="followed_id" id="follow-data-id" value="<%=user.id%>" >
+                        <input type="hidden" name="followed_id" id="follow-data-status" value="<%= is_following %>" >
+                        <button id="follow-unfollow" class="btn btn-primary">
+                        <%if is_following%>
+                            
+                            unfollow
+                        <% else %>
+                            follow
+                        <% end %>
+                        </button>
+                    </div>
+                <% end %>
                    
             </div>
             
