@@ -1,65 +1,58 @@
+
+
 <%
     user_id = thuctap.partner_info.user_id
     creater = thuctap.partner_info.name
     title = thuctap.title
     url = thuctap_path(thuctap)
     profile_url = "/partner/#{user_id}/profile"
+    image_url = thuctap.partner_info.logo.url(:medium)
 %>
 
-<div class="row list-group-item tin-thuc-tap"> 
-    <div class="col-xs-12  col-md-3 post-logo-wrapper">
-        <a href="<%= thuctap_path(thuctap) %>">
-            <image src="<%=thuctap.partner_info.logo.url(:medium)%>" class="post-logo" title="<%=thuctap.partner_info.name %>" >
-        </a>
-    </div> 
-    <div class="col-xs-12 col-md-9">
-        
-        <h4><a href="<%=url%>" title="<%=title%>"><%= thuctap.title %></a></h4>
-        <p>
-            <%= strip_tags(markdown(thuctap.content)).truncate(100) %>
-        </p>
-        <div class="list-group">
-                <div class="list-group-item">
-                    
-                    <div class="row-content">
-                        <div class="list-group-item-heading">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <small>by </small>
-                    
-                            <a href="<%= profile_url%>" title="<%=creater%>">
-                                <%=thuctap.partner_info.name %>
-                            </a>
-                            <small>
-                                    <i class="glyphicon glyphicon-time"></i> <%= time_ago_in_words(thuctap.created_at) %></span>
-                                    <br>
-                            </small>
-                        </div>
-                    </div>
-                    <ul class="list-unstyled list-inline">
-                        <li><span class="glyphicon glyphicon-tags">
-                    </span>Tags:
-                    <a href="#">
-                    <% thuctap.tag.split(",").each  { |tag| %>
-                        <span class="label label-info" title="<%= tag %>"><%= tag%></span>
-                    <% } %></a></li>
-                        <li><i class="glyphicon glyphicon-calendar"></i><%= thuctap.endtime.strftime("%b %d,%Y %H:%M") %></li>
-                        <li><%= link_to  thuctap do %>
-                            View more <i class="fa fa-angle-double-right"></i>
-                        <% end %> 
-                        </li>
-        
-                    </ul>
-                   
-                    
-                </div>
-                
+<div class="row thuctap-list-element py-4 px-4">
+
+    <div class="d-flex col-md-3 align-content-center border border-sucess bg-dark">
+        <div class="d-flex px-0 py-0 my-auto align-self-center">
+            <a href="<%=url%>" title="<%=title%>">
+                <img class="w-100" src="<%= image_url%>" title="<%=title%>" alt="<%=title%>">
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-9 row">
+        <div class="col-md-12 row">
+            <div class="col-sm-10">
+                <h4><a href="<%=url%>" title="<%=title%>"><%= thuctap.title %></a></h4>
+                <p>
+                    <%= strip_tags(markdown(thuctap.content)).truncate(100) %>
+                </p>
             </div>
-    </div> 
-
-</div>    
- <!--     
-        <td><%= link_to 'Show', thuctap %></td>
-        <td><%= link_to 'Edit', edit_thuctap_path(thuctap) %></td>
-        <td><%= link_to 'Destroy', thuctap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
---> 
+            <div class="col-sm-2">
+                <a class="btn btn-dark text-primary" href="<%=url%>">
+                    Xem ngay
+                </a>
+            </div>
+            
+        </div>
+           
+            <div class="col-md-12">
+                    <span class="fa fa-user"></span>by
+                    <a href="<%= profile_url %>" title="<%=creater%>">
+                        <%=thuctap.partner_info.name %>
+                    </a>
+                    <small>
+                        <i class="fa fa-history"></i> <%= time_ago_in_words(thuctap.created_at) %> ago</span>
+                    </small>
+                    <br>
+                    |<span class="fa fa-calendar">
+                    </span> <%= thuctap.endtime.strftime("%b %d,%Y") %> |
+                    <span class="fa fa-tags">
+                    </span>Tags:
+                    <% thuctap.tag.split(",").each  { |tag| %>
+                        <span class="btn btn-primary btn-sm" title="<%= tag %>"><%= tag%></span>
+                    <% } %>
+                   
+            </div>                 
+    </div>
+    
+</div>

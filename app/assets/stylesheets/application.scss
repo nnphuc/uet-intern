@@ -6,7 +6,7 @@
 * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
 * files in this directory. Styles in this file should be added after the last require_* statement.
 * It is generally better to create a new file per style scope.
-*
+*= require_tree
 */
 
 @import "bootstrap";
@@ -15,17 +15,48 @@
 body {
     font-size: 14px;
     font-family: Helvetica, Arial, sans-serif;
+    
 }
-html, body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
- }
+html {
+    position: relative;
+}
+
+#navbarSupportedContent {
+    .nav-item > a:hover {
+        background-color: purple;
+    }
+    .dropdown-menu {
+        a,a:link,a:visited {
+            background-color: white;
+            color:black;
+        }
+        a:hover {
+            background-color: blue;
+            color: white;
+        }
+    }
+}
+
  
 #page-body {
+    min-width: 1000px;
     background-color:#F1F1F1;
+    a:link,a:visited {
+        color: rgb(0, 123, 255);
+    }
+    a:hover {
+        background: transparent!important;
+    }
 }
 
 #page-sidebar {
     background-color:#ECF8EC;
+}
+
+#footer {
+    background: #45526E;
+    color: white;
+    a,a:link {
+        color: white;
+    }
 }

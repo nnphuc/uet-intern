@@ -5,13 +5,13 @@
     <% if current_user %>
         <% if current_user.has_role? :partner %>
              <li class="nav-item">
-                <a class="nav-link" href="/partner/<%= current_user.id %>/thuctap" title="danh sach thuc tap">
-                    <span class="glyphicon glyphicon-list"></span> danh sach
+                <a class="nav-link" href="/partner/<%= current_user.id %>/thuctap" title="danh sách thực tp">
+                    <span class="fa fa-list"></span> danh sách
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%= new_thuctap_path %>" title="tao tin tuyen dung thuc tap">
-                    <span class="glyphicon glyphicon-plus"></span> tao tin
+                <a class="nav-link" href="<%= new_thuctap_path %>" title="tao tin tuyển dụng">
+                    <span class="fa fa-plus"></span> tạo tin
                 </a>
             </li>
         <% elsif current_user.has_role? :student %>
@@ -40,11 +40,11 @@
             <% end %>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="/myprofile">myprofile</a>
-            <a class="dropdown-item" href="/update_info">update info</a>
-            <%= link_to "doi mat khau", edit_user_registration_path,:class=>"dropdown-item" %>
+            <a class="dropdown-item" href="/myprofile">trang cá nhân</a>
+            <a class="dropdown-item" href="/update_info">cập nhật tài khoản</a>
+            <%= link_to "đổi mật khẩu", edit_user_registration_path,:class=>"dropdown-item" %>
             <a class="divider"></a>
-            <%= link_to "dang xuat", destroy_user_session_path,method: :delete,:class=>"dropdown-item"  %>
+            <%= link_to "đăng xuất", destroy_user_session_path,method: :delete,:class=>"dropdown-item"  %>
         </div>
        
             
@@ -53,13 +53,13 @@
     <% else  %>
     <li class="nav-item">
         
-         <a class="nav-link" href="<%= new_user_session_path %>">dang nhap</a>
+         <a class="nav-link" href="<%= new_user_session_path %>">đăng nhập</a>
         
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true">user</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="<%= new_user_session_path %>">dang nhap</a>
+            <a class="dropdown-item" href="<%= new_user_session_path %>">đăng nhập</a>
         </div>
     </li>
     <% end %>

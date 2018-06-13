@@ -16,7 +16,7 @@
       %>
       <div class="<%=className %>">
           <img class="d-block w-100" style="height:300px" src="<%=thuctap.partner_info.logo.url%>" alt="First slide">
-          <h3 class="text-sucess text-center"><%= thuctap.partner_info.name %> </h3>
+          <a href="/partner/<%=thuctap.partner_info.user.id%>/profile"><h3 class="text-sucess text-center"><%= thuctap.partner_info.name %> </h3></a>
       </div>
     <%end%>
  
@@ -30,3 +30,10 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<%= render partial: "/thuctaps/list_element", collection: @thuctaps, as: :thuctap %>
+
+<div class="mx-auto col-sm-8">
+    <%= paginate @thuctaps,window:1  %>
+</div>
+
