@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :lecturer_info
   has_one :partner_info
   has_many :send_notifications, foreign_key: :sender_id, class_name: Notification.name, dependent: :delete_all
-  has_many :receive_notifications, foreign_key: receiver_id:, class_name: Notification.name, dependent: :delete_all
+  has_many :receive_notifications, foreign_key: :receiver_id, class_name: Notification.name, dependent: :delete_all
 
 
   has_many :active_relationships,  class_name:  "Follow",
