@@ -1,10 +1,12 @@
+<div class="container-fluid">
+
 <div class="row">
 
 <div class="col-md-8 col-md-offset-2">
 
     <%= form_for(@thuctap) do |f| %>
 
-        <%= f.hidden_field :partner_info_id , value: current_user.partner_info.id  %>
+        <%= f.hidden_field :partner_id , value: current_user.id  %>
         <div class="form-group ">
             <%= f.label :title %>
             <%= f.text_field :title,type: "text", class:"form-control",placeholder: "title" %>
@@ -37,11 +39,12 @@
 
 
         <div class="form-group">
-            <%= f.button :submit %>
+            <%= f.button :submit ,class: "btn btn-primary"%>
 
         </div>
 
     <% end %>
 </div>
 
+</div>
 </div>

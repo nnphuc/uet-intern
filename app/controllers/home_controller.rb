@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-
+    @lastests = Thuctap.select([:partner_info_id,:title,:id,"max(created_at)"]).group(:partner_info_id).limit(5)
+    @thuctaps = Thuctap.all.order("created_at DESC").page @page
   end
 
   def dangnhap

@@ -1,0 +1,9 @@
+<%= link_to(conversation) do %>
+  <li>
+    <% if current_user.id == conversation.sender_id %>
+      <h4><%= (User.find_by id: conversation.receiver_id).email %></h4>
+    <% else %>
+      <h4><%= (User.find_by id: conversation.sender_id).email %></h4>
+    <% end %>
+  </li>
+<% end %>

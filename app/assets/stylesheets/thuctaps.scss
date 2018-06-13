@@ -3,22 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.tin-thuc-tap:nth-last-of-type(odd) {
-    background-color: #ECEAE6;
+.pagination {
+    display: inline-block;
+    .page,.next,.last,.first {
+        padding: 0 10px;
+    }
+    .current {
+        color: orange;
+    }
 }
 
-.post-logo {
-    max-width: 150px;
-    max-height: 100px;
-    display: inline-block;
-}
-.post-logo-wrapper {
-    height: 180px;
-    text-align: center;
+.thuctap-list-element:nth-of-type(odd) {
+    background-color: white;
 }
 .post-logo-wrapper:before {
     content: ' ';
     display: inline-block;
     vertical-align: middle;
     height: 30%;
+}
+.thuctap-list-element:hover{
+    background: #45526E;
+    color: white;
 }

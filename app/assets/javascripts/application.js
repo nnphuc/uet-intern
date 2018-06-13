@@ -10,14 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
+//= require channels/conversation
+//= require bootstrap-sprockets
 //= require_tree .
-//= require jquery
-//= require bootstrap-sprockets
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
 
 
 function sticky_header() {
@@ -48,8 +46,6 @@ function hightlight_active( ) {
 
 $(document).ready(hightlight_active);
 $(document).on('turbolinks:load',hightlight_active);
-
-
 function get_token() {
     var data = {};
     var token_name = $("meta[name=csrf-param]").attr("content");

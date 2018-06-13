@@ -15,11 +15,10 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem 'simple_form'
 gem 'popper_js', '~> 1.12.9'
-gem "bootstrap-sass", "~>3.3.7"
+gem "bootstrap", "~>4.1"
 gem "paperclip", "~> 6.0.0"
 gem "font-awesome-rails"
 gem "cancancan"
-gem "rolify"
 gem "rails_admin_rollincode"
 gem "rails_admin", "~>1.2"
 gem "redcarpet"

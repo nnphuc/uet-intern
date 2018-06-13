@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  rolify
+  enum role: {student: 0, partner: 1, lecturer: 2, admin: 3}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,10 +20,15 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
+  has_many :messages, foreign_key: :user_id, dependent: :destroy
+  has_many :message_senders, class_name: Conversation.name, foreign_key: :sender_id, dependent: :destroy
+  has_many :message_receivers, class_name: Conversation.name, foreign_key: :receiver_id, dependent: :destroy
   validates :email, presence: true
   validates :password,presence: true
 
+  def has_role? role
+    return self.role == role
+  end
 
   def follow(other_user)
     following << other_user

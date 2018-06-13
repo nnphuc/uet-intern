@@ -1,4 +1,4 @@
 <%= render partial: "list_element", collection: @thuctaps, as: :thuctap %>
-<div class="text-center">
-    <%= paginate(@thuctaps)  %>
+<div class="mx-auto col-sm-8">
+    <%= paginate @thuctaps,window:1  %>
 </div>

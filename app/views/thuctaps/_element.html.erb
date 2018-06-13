@@ -19,45 +19,46 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col-md-12 post-header-line">
-                    <span class="glyphicon glyphicon-user"></span>by
+                <div class="col-md-12">
+                    <span class="fa fa-user"></span>by
                     <a href="<%= profile_url %>" title="<%=creater%>">
                         <%=thuctap.partner_info.name %>
                     </a>
                     <small>
-                        <i class="glyphicon glyphicon-time"></i> <%= time_ago_in_words(thuctap.created_at) %></span>
+                        <i class="fa fa-history"></i> <%= time_ago_in_words(thuctap.created_at) %> ago</span>
                     </small>
-                    |<span class="glyphicon glyphicon-calendar">
-                    </span><%= thuctap.endtime.strftime("%b %d,%Y") %> |
-                    <span class="glyphicon glyphicon-tags">
+                    |<span class="fa fa-calendar">
+                    </span> <%= thuctap.endtime.strftime("%b %d,%Y") %> |
+                    <span class="fa fa-tags">
                     </span>Tags:
                     <% thuctap.tag.split(",").each  { |tag| %>
-                        <span class="label label-info" title="<%= tag %>"><%= tag%></span>
+                        <span class="btn btn-primary btn-sm" title="<%= tag %>"><%= tag%></span>
                     <% } %>
                    
                 </div>
             </div>
-            <br>
-            <div class="row post-content">
+            <hr>
+            <div class="container">
                 <p>
                     <%= markdown(thuctap.content) %>
                 </p>
             </div>
         </div>
     </div>
+    <hr>
     <ul class="list-unstyled list-inline">
         <%if current_user&& thuctap.partner_info.user_id == current_user.id %>
-            <li><%= link_to new_thuctap_path do %>
-                    <span class="glyphicon glyphicon-plus"></span> New
+            <li class="list-inline-item btn"><%= link_to new_thuctap_path do %>
+                    <span class="fa fa-plus"></span> New
                 <% end %>
             </li>
-            <li><%= link_to edit_thuctap_path(thuctap) do %>
-                    <span class="glyphicon glyphicon-pencil"></span> Edit
+            <li class="list-inline-item"><%= link_to edit_thuctap_path(thuctap) do %>
+                    <span class="fa fa-pencil"></span> Edit
                 <% end %>
             </li>
-            <li><%= link_to thuctap_path(thuctap),method: :delete,
+            <li class="list-inline-item"><%= link_to thuctap_path(thuctap),method: :delete,
                 data: {confirm: "Are your sure?"}  do %>
-                    <span class="glyphicon glyphicon-remove"></span> Delete
+                    <span class="fa fa-remove"></span> Delete
                 <% end %>
             </li>
         <% end  %>

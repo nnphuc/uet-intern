@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   }
 
   devise_for :users,skip: [:sessions,:registrations]
+  resources :messages, only: [:create]
+  resources :conversations
+  resources :users, only: [:index, :show]
 end

@@ -1,2 +1,0 @@
-class NotificatiionsController < ApplicationController
-end

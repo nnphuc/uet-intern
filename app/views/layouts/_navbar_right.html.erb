@@ -1,16 +1,14 @@
-<ul class="nav navbar-nav navbar-right" id="navbar-right">
-    <!-- custom link ------------>
-
+<ul class="navbar-nav mx-auto">
     <% if current_user %>
         <% if current_user.has_role? :partner %>
-             <li>
-                <a href="/partner/<%= current_user.id %>/thuctap" title="danh sach thuc tap">
-                    <span class="glyphicon glyphicon-list"></span> danh sach
+             <li class="nav-item">
+                <a class="nav-link" href="/partner/<%= current_user.id %>/thuctap" title="danh sách thực tp">
+                    <span class="fa fa-list"></span> danh sách
                 </a>
             </li>
-            <li>
-                <a href="<%= new_thuctap_path %>" title="tao tin tuyen dung thuc tap">
-                    <span class="glyphicon glyphicon-plus"></span> tao tin
+            <li class="nav-item">
+                <a class="nav-link" href="<%= new_thuctap_path %>" title="tao tin tuyển dụng">
+                    <span class="fa fa-plus"></span> tạo tin
                 </a>
             </li>
         <% elsif current_user.has_role? :student %>
@@ -23,48 +21,70 @@
 
     <!-------- end custom link -->
 
-   
+
     <% if current_user %>
-    <li>
-        <a href="#">
-            <span class="glyphicon glyphicon-globe" style="font-size:15px"></span>
-        </a>
-    </li>
-        
+
+    <li style="margin-right: 10px;"><a href="<%= conversation_path(Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id).last) %>" >
+          <i id="conversation-<%= current_user.id %>" class="fa fa-comments fa-2x"></i>
+        </a></li>
+
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle avatar-wrapper" data-toggle="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+         aria-expanded="false" id="notifying-<%= current_user.id %>">
+        <i class="fa fa-globe fa-2x"></i><%= t "views.layouts.header.notification" %></a>
+      <ul class="dropdown-menu notify-drop">
+        <div class="notify-drop-title">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">Bildirimler (<b>2</b>)</div>
+            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+              <a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu.">
+                <i class="fa fa-dot-circle-o"></i></a></div>
+          </div>
+        </div>
+        <div class="drop-content" id="notifications-<%= current_user.id %>">
+          <%= render partial: "notifications/notification",
+                     collection: current_user.receive_notifications.order(created_at: :desc) %>
+        </div>
+        <div class="notify-drop-footer text-center">
+          <a href=""><i class="fa fa-eye"></i> <%= current_user.email %></a>
+        </div>
+      </ul>
+    </li>
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true">
             <% if get_info current_user %>
                 <% avatar= get_avatar current_user %>
-                <img class="avatar" src="<%= avatar.url(:thumb) %>" alt="avatar" title="avatar">
+                <img class="rounded-circle" style="width:25px;height:25px" src="<%= avatar.url(:thumb) %>" alt="avatar" title="avatar">
             <% else %>
                 avatar
             <% end %>
-            <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu">
-           
-            <li><a href="/myprofile">myprofile</a></li>
-            <li><a href="/update_info">update info</a></li>
-            <li><%= link_to "doi mat khau", edit_user_registration_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to "dang xuat", destroy_user_session_path,method: :delete %></li> 
-            
-        </ul>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/myprofile">trang cá nhân</a>
+            <a class="dropdown-item" href="/update_info">cập nhật tài khoản</a>
+            <%= link_to "đổi mật khẩu", edit_user_registration_path,:class=>"dropdown-item" %>
+            <a class="divider"></a>
+            <%= link_to "đăng xuất", destroy_user_session_path,method: :delete,:class=>"dropdown-item"  %>
+        </div>
+
+
+
     </li>
+
     <% else  %>
-   
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">user
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            
-            
-            <li><a href="/dangnhap">dang nhap</a></li>
-            
-            
-        </ul>
+    <li class="nav-item">
+
+         <a class="nav-link" href="<%= new_user_session_path %>">đăng nhập</a>
+
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true">user</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="<%= new_user_session_path %>">đăng nhập</a>
+        </div>
     </li>
     <% end %>
-    
+
 </ul>
+
+
