@@ -1,34 +1,29 @@
-<div class="container">
-<% if current_user %>
-
-
-    <% if current_user.lecturer_info %>
-    <% info = current_user.lecturer_info %>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        
-         <%= image_tag(info.avatar.url(:medium)) %> 
+<% if user %>
+    <% if user.lecturer_info %>
+    <% info = user.lecturer_info %>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+         <%= image_tag(info.avatar.url(:medium)) %>
           <address>
             <a href="mailto:<%=info.gmail %>"></a><%= info.hoten %><br>
             Visit us at:<br>
             <%= info.diachi%><br>
-            
-        </address> 
-       
+
+        </address>
+
         <div class="hr-text">
             <span>WORK</span>
         </div>
         <address>
-            <strong>Email: <strong><a href="mailto:<%=current_user.email%>" ></a><%= current_user.email %><br>
-           
-        </address> 
+            <strong>Email: <strong><a href="mailto:<%=user.email%>" ></a><%= user.email %><br>
+        </address>
 
-       
+
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6">
-           
-          
+
+
            <div class="">
-               
+
            </div>
            <hr class="opacity-75"/>
 
@@ -41,7 +36,7 @@
                </address>
            </div>
            <address>
-           
+
             <div class="wrapper-information">
                 <strong>Phone: </strong>
                 <span><%= info.dienthoai %></span>
@@ -50,19 +45,19 @@
                <strong>Gmail: </strong>
                <span><%= info.gmail%></span>
             </div>
-            
+
            </address>
            <hr class="opacity-75"/>
            <div class="opacity-75 upcase text-small">base information</div>
-           
-          
+
+
            <div class="wrapper-information">
                <strong>Khoa: </strong>
                <span><%= info.khoa %></span>
             </div>
-           
-            
-           
+
+
+
 
     </div>
     <% else %>
@@ -73,4 +68,3 @@
 <% else %>
 
 <% end %>
-</div>

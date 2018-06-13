@@ -1,0 +1,70 @@
+<ul class="nav navbar-nav navbar-right" id="navbar-right">
+    <!-- custom link ------------>
+
+    <% if current_user %>
+        <% if current_user.has_role? :partner %>
+             <li>
+                <a href="/partner/<%= current_user.id %>/thuctap" title="danh sach thuc tap">
+                    <span class="glyphicon glyphicon-list"></span> danh sach
+                </a>
+            </li>
+            <li>
+                <a href="<%= new_thuctap_path %>" title="tao tin tuyen dung thuc tap">
+                    <span class="glyphicon glyphicon-plus"></span> tao tin
+                </a>
+            </li>
+        <% elsif current_user.has_role? :student %>
+
+        <% elsif current_user.has_role? :lecturer %>
+
+        <%end%>
+    <% end %>
+
+
+    <!-------- end custom link -->
+
+   
+    <% if current_user %>
+    <li>
+        <a href="#">
+            <span class="glyphicon glyphicon-globe" style="font-size:15px"></span>
+        </a>
+    </li>
+        
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle avatar-wrapper" data-toggle="dropdown">
+            <% if get_info current_user %>
+                <% avatar= get_avatar current_user %>
+                <img class="avatar" src="<%= avatar.url(:thumb) %>" alt="avatar" title="avatar">
+            <% else %>
+                avatar
+            <% end %>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+           
+            <li><a href="/myprofile">myprofile</a></li>
+            <li><a href="/update_info">update info</a></li>
+            <li><%= link_to "doi mat khau", edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "dang xuat", destroy_user_session_path,method: :delete %></li> 
+            
+        </ul>
+    </li>
+    <% else  %>
+   
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">user
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            
+            
+            <li><a href="/dangnhap">dang nhap</a></li>
+            
+            
+        </ul>
+    </li>
+    <% end %>
+    
+</ul>

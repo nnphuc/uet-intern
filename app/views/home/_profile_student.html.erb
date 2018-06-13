@@ -1,13 +1,12 @@
-<div class="container">
 <% if current_user %>
 
 
     <% if current_user.student_info %>
     <% info = current_user.student_info %>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        
-         <%= image_tag(current_user.student_info.avatar.url(:medium)) %> 
-       
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+         <%= image_tag(current_user.student_info.avatar.url(:medium)) %>
+
         <div class="hr-text">
             <span>WORK</span>
         </div>
@@ -15,19 +14,22 @@
             <a href="mailto:<%=info.emailcanhan%>" ></a><%= current_user.student_fixed_info.hoten %><br>
             Visit us at:<br>
             <%= current_user.student_fixed_info.diachi%><br>
-            
-        </address> 
+
+        </address>
 
         <div class="hr-text">
                 <span>SKILLS</span>
         </div>
-        <ul class="list-unstyled">
-            <li>kinh nghiem: <%= info.kinhnghiem %></li>
-            <li>ngoai ngu: <%= info.ngoaingu %></li>
+        <address>
+            <ul class="list-unstyled">
+            <li><strong>kinh nghiem:</strong> <%= info.kinhnghiem %></li>
+            <li><strong>ngoai ngu:</strong> <%= info.ngoaingu %></li>
         </ul>
+        </address>
+
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6">
-           
+
            <div>
                <h3><%= current_user.student_fixed_info.hoten %></h3>
                <address>
@@ -36,7 +38,7 @@
                </address>
            </div>
            <div class="">
-               
+
            </div>
            <hr class="opacity-75"/>
 
@@ -58,12 +60,12 @@
                <strong>Facebook: </strong>
                <span><%= info.facebook%></span>
             </div>
-           
+
            </address>
            <hr class="opacity-75"/>
            <div class="opacity-75 upcase text-small">base information</div>
-           
-          
+
+
             <div class="wrapper-information">
                <strong>Lop: </strong>
                <span><%= current_user.student_fixed_info.lop %></span>
@@ -76,7 +78,7 @@
                <strong>Nganh: </strong>
                <span><%= current_user.student_fixed_info.nganh %></span>
             </div>
-           
+
 
     </div>
     <% else %>
@@ -87,4 +89,3 @@
 <% else %>
 
 <% end %>
-</div>

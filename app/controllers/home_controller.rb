@@ -4,10 +4,14 @@ class HomeController < ApplicationController
   end
 
   def dangnhap
-    if current_user 
+    if current_user
       redirect_to(request.env['HTTP_REFERER'] || root_path)
 
     end
+  end
+
+  def thuctap
+
   end
 
   def thongbao
@@ -16,28 +20,35 @@ class HomeController < ApplicationController
   def congviec
   end
 
-  def thuctap
+  def myprofile
+    unless current_user
+        redirect_to root_path
+    end
   end
 
-  def myprofile
-
+  def viewprofile
+    @user = User.find_by id:params[:id]
+    s = params[:role].to_sym
+    if @user.nil? || !(@user.has_role? s) then
+        render "/error/not_found"
+    end
   end
 
 
 
   def update_info
     if current_user.has_role? :student
-      @info = StudentInfo.new
+      @info = current_user.student_info||StudentInfo.new
     elsif current_user.has_role? :lecturer
-      @info = LecturerInfo.new
+      @info = current_user.lecturer_info||LecturerInfo.new
     elsif current_user.has_role? :partner
-      @info = PartnerInfo.new
+      @info = current_user.partner_info||PartnerInfo.new
     elsif current_user.has_role? :admin
     end
 
   end
   def update
-    if current_user.has_role? :student 
+    if current_user.has_role? :student
       if current_user.student_info
         @info = current_user.student_info
         @info.update(student_info_params)

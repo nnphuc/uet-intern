@@ -1,0 +1,64 @@
+<%
+    user_id = thuctap.partner_info.user_id
+    creater = thuctap.partner_info.name
+    title = thuctap.title
+    url = thuctap_path(thuctap)
+    profile_url = "/partner/#{user_id}/profile"
+    set_title title
+%>
+
+    <div class="row">
+        <div class="col-md-12 post">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        <strong>
+                            <a href="<%=url%>" title="<%=title%>"><%= thuctap.title %></a>
+                        </strong>
+                    </h4>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 post-header-line">
+                    <span class="glyphicon glyphicon-user"></span>by
+                    <a href="<%= profile_url %>" title="<%=creater%>">
+                        <%=thuctap.partner_info.name %>
+                    </a>
+                    <small>
+                        <i class="glyphicon glyphicon-time"></i> <%= time_ago_in_words(thuctap.created_at) %></span>
+                    </small>
+                    |<span class="glyphicon glyphicon-calendar">
+                    </span><%= thuctap.endtime.strftime("%b %d,%Y") %> |
+                    <span class="glyphicon glyphicon-tags">
+                    </span>Tags:
+                    <% thuctap.tag.split(",").each  { |tag| %>
+                        <span class="label label-info" title="<%= tag %>"><%= tag%></span>
+                    <% } %>
+                   
+                </div>
+            </div>
+            <br>
+            <div class="row post-content">
+                <p>
+                    <%= markdown(thuctap.content) %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <ul class="list-unstyled list-inline">
+        <%if current_user&& thuctap.partner_info.user_id == current_user.id %>
+            <li><%= link_to new_thuctap_path do %>
+                    <span class="glyphicon glyphicon-plus"></span> New
+                <% end %>
+            </li>
+            <li><%= link_to edit_thuctap_path(thuctap) do %>
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                <% end %>
+            </li>
+            <li><%= link_to thuctap_path(thuctap),method: :delete,
+                data: {confirm: "Are your sure?"}  do %>
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                <% end %>
+            </li>
+        <% end  %>
+    </ul>

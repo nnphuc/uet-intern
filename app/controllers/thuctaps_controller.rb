@@ -1,10 +1,14 @@
 class ThuctapsController < ApplicationController
   before_action :set_thuctap, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_permission, only: [:edit,:update,:destroy]
+
   # GET /thuctaps
   # GET /thuctaps.json
   def index
-    @thuctaps = Thuctap.all
+
+    @page = params[:page]
+    @thuctaps = Thuctap.all.order("created_at DESC").page @page
   end
 
   # GET /thuctaps/1
@@ -15,6 +19,7 @@ class ThuctapsController < ApplicationController
   # GET /thuctaps/new
   def new
     @thuctap = Thuctap.new
+    @thuctap.partner_info = current_user.partner_info
   end
 
   # GET /thuctaps/1/edit
@@ -25,7 +30,6 @@ class ThuctapsController < ApplicationController
   # POST /thuctaps.json
   def create
     @thuctap = Thuctap.new(thuctap_params)
-
     respond_to do |format|
       if @thuctap.save
         format.html { redirect_to @thuctap, notice: 'Thuctap was successfully created.' }
@@ -62,6 +66,13 @@ class ThuctapsController < ApplicationController
   end
 
   private
+    def require_permission
+        thuctap = Thuctap.find(params[:id])
+        if current_user != thuctap.partner_info.user
+            redirect_to(thuctap_path(thuctap))
+            #Or do something else here
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_thuctap
       @thuctap = Thuctap.find(params[:id])
@@ -69,6 +80,6 @@ class ThuctapsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thuctap_params
-      params.require(:thuctap).permit(:partner_id, :title, :content, :address, :tag, :endtime)
+      params.require(:thuctap).permit(:partner_info_id, :title, :content, :address, :tag, :endtime)
     end
 end

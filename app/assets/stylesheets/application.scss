@@ -22,23 +22,61 @@ body {
 }
 
 #header nav li > a,.menu  li a {
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+ }
+
+#menu-extra  li > a,.menu  li a {
     text-transform: uppercase;
     color:#1b77ad;
     font-size: 12px;
     font-weight: bolder;
 }
 
+#footer a,#footer a:active,#footer a:visited {
 
-#header > nav{
-    margin:0 !important;
-    background-color: #fff;
+    color:#1b77ad;
+    font-size: 12px;
+    font-weight: bolder;
+}
+#footer a:hover {
+    text-decoration: none;
+    color: #bdd843;
+    background-color: transparent;
 }
 
 
-#header a:hover,a:active,a.active, .menu li a:hover{
+#navbar-right a,#navbar-right a:active,#navbar-right a:visited {
+
+    color:#1b77ad;
+    font-size: 12px;
+    font-weight: bolder;
+}
+#navbar-right a:hover {
+    text-decoration: none;
+    color: #C45F5F;
+    background-color: transparent;
+}
+
+
+
+#menu-extra {
+    margin:0 !important;
+}
+
+#navbar-header  .navbar-brand {
+    color: white;
+}
+
+#menu-extra a:hover,a:active,a.active, .menu li a:hover{
     color:#bdd843;
 }
-#header li.active a {
+#menu-extra li.active a {
     color:#bdd843;
     background-color: #fff;
 }
@@ -61,9 +99,50 @@ body {
     margin: auto;
 }
 
+a,a:active,a:link,a:visited {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none;
+    color: #4267B2;
+}
+a:hover {
+    color:#E77C26;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
+
+#navbar-right  li.dropdown.open  li  a:hover {
+    color: white;
+    background-color:#4267B2;
+    background-image: none;
+}
+
+#navbar-right > li{
+    & > a, &>a:link,&>a:visited {
+        color: white;
+        background: transparent;
+    }
+    & >a.avatar-wrapper {
+        padding: 10px;
+    }
+    &> a:hover,&a:active {
+        color:#E77C26;;
+    }
+}
+
+
+#navbar-right .avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
 #footer{
-   
+
     background-color:#BBE7F9;
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 14px;
@@ -75,3 +154,58 @@ body {
     background: url( "header-pattern-150.png" ) repeat;
 }
 
+#navbar-header{
+   background-color:#004680;
+   margin:0;
+   padding:0;
+   border:0;
+   border-radius: 0;
+   top:0;
+   z-index: 9999;
+   width: 100%;
+}
+
+.sticky {
+    position: sticky;
+}
+.fixed {
+    position: fixed;
+}
+.mt-50 {
+    margin-top:50px;
+}
+.mt-0 {
+    margin-top:0;
+}
+
+label.is-invalid {
+    &::after{
+        content: '*';
+        color: red;
+    }
+}
+
+input.is-invalid {
+    border-color: red;
+}
+
+.fixed-bar-right{
+    position: sticky;
+    top:50px;
+}
+.bg-1 {
+    background-color: #f4511e; /* Orange */
+
+}
+.bg-2 {
+    background-color: #1abc9c; /* Green */
+
+}
+.bg-3 {
+    background-color: #474e5d; /* Dark Blue */
+
+}
+.bg-4 {
+    background-color: #ffffff; /* White */
+
+}

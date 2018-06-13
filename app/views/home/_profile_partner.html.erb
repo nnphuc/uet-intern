@@ -1,9 +1,8 @@
+<% if user.partner_info %>
+    <% info = user.partner_info %>
 
-<% if current_user.partner_info %>
-    <% info = current_user.partner_info %>
-    
-    <img src="<%=info.logo.url%>" alg="logo" style="max-height:200px;width:100%"> 
-    <div class="container">
+    <img src="<%=info.logo.url%>" alg="logo" style="max-height:200px;width:100%">
+    <div class="row">
         <div class="text-center">
             <h2 class="text-info"><strong><%= info.name %></strong></h2>
             <div>
@@ -12,15 +11,27 @@
                     <strong>phone: </strong><span><%= info.dienthoai %></span><br>
                     <strong>email: </strong><span><%= info.contact%></span>
                 </address>
-                
-                <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
-                   
+                <% if current_user %>
+                    <% is_following = current_user.following? user %>
+                    <div class="ajax-button" id="follow-ajax">
+                        <input type="hidden" name="followed_id" id="follow-data-id" value="<%=user.id%>" >
+                        <input type="hidden" name="followed_id" id="follow-data-status" value="<%= is_following %>" >
+                        <button id="follow-unfollow" class="btn btn-primary">
+                        <%if is_following%>
+
+                            unfollow
+                        <% else %>
+                            follow
+                        <% end %>
+                        </button>
+                    </div>
+                <% end %>
             </div>
-            
+
         </div>
 
     </div>
 
 <%else %>
-    cap nhat thong tin 
+    cap nhat thong tin
 <%end %>
