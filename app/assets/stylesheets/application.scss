@@ -7,11 +7,8 @@
 * files in this directory. Styles in this file should be added after the last require_* statement.
 * It is generally better to create a new file per style scope.
 *
-*= require font-awesome
-*= require_tree .
-*= require_self
 */
-@import "bootstrap-sprockets";
+
 @import "bootstrap";
 @import "font-awesome";
 
@@ -24,166 +21,11 @@ html, body {
     margin: 0;
     padding: 0;
  }
-
-#menu-extra  li > a,.menu  li a {
-    text-transform: uppercase;
-    color:#1b77ad;
-    font-size: 12px;
-    font-weight: bolder;
+ 
+#page-body {
+    background-color:#F1F1F1;
 }
 
-
-
-#footer a,#footer a:active,#footer a:visited {
-   
-    color:#1b77ad;
-    font-size: 12px;
-    font-weight: bolder;
-}
-#footer a:hover {
-    text-decoration: none;
-    color: #bdd843;
-    background-color: transparent;
-}
-
-
-#navbar-right a,#navbar-right a:active,#navbar-right a:visited {
-   
-    color:#1b77ad;
-    font-size: 12px;
-    font-weight: bolder;
-}
-#navbar-right a:hover {
-    text-decoration: none;
-    color: #C45F5F;
-    background-color: transparent;
-}
-
-
-
-#menu-extra {
-    margin:0 !important;
-}
-
-#navbar-header  .navbar-brand {
-    color: white;
-}
-
-#menu-extra a:hover,a:active,a.active, .menu li a:hover{
-    color:#bdd843;
-}
-#menu-extra li.active a {
-    color:#bdd843;
-    background-color: #fff;
-}
-
-a,a:active,a:link,a:visited {
-    text-decoration: none;
-    background-color: transparent;
-    background-image: none;
-    color: #4267B2;
-}
-a:hover {
-    color:#E77C26;
-}
-
-.dropdown-menu li {
-    cursor: pointer;
-}
-
-
-#navbar-right  li.dropdown.open  li  a:hover {
-    color: white;
-    background-color:#4267B2;
-    background-image: none;
-}
-
-#navbar-right > li{
-    & > a, &>a:link,&>a:visited {
-        color: white;
-        background: transparent;
-    }
-    & >a.avatar-wrapper {
-        padding: 10px;
-    }
-    &> a:hover,&a:active {
-        color:#E77C26;;
-    }
-} 
-
-
-#navbar-right .avatar {
-    vertical-align: middle;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
-
-#footer{
-   
-    background-color:#BBE7F9;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.6em;
-    padding: 10px 0 0;
-    margin: 50px 0 0 0;
-    color: #bbb;
-    background: url( "header-pattern-150.png" ) repeat;
-}
-
-#navbar-header{
-   background-color:#004680;
-   margin:0;
-   padding:0;
-   border:0;
-   border-radius: 0;
-   top:0;
-   z-index: 9999;
-   width: 100%;
-}
-
-.sticky {
-    position: sticky;
-}
-.fixed {
-    position: fixed;
-}
-.mt-50 {
-    margin-top:50px;
-}
-.mt-0 {
-    margin-top:0;
-}
-
-label.is-invalid {
-    &::after{
-        content: '*';
-        color: red;
-    }
-}
-
-input.is-invalid {
-    border-color: red;
-}
-
-.fixed-bar-right{
-    position: sticky;
-    top:50px;
-}
-.bg-1 {
-    background-color: #f4511e; /* Orange */
-    
-}
-.bg-2 {
-    background-color: #1abc9c; /* Green */
-    
-}
-.bg-3 {
-    background-color: #474e5d; /* Dark Blue */
-    
-}
-.bg-4 {
-    background-color: #ffffff; /* White */
-    
+#page-sidebar {
+    background-color:#ECF8EC;
 }
