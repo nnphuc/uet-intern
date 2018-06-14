@@ -77,12 +77,13 @@ class MsgsController < ApplicationController
       @msg = Msg.find(params[:id])
     end
     def valid 
+  
         if !current_user
             redirect_to root_path
-            
+            @people =[]
+        else
+            @people = current_user.followers + current_user.following
         end
-        
-       @people = current_user.followers + current_user.following
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def msg_params

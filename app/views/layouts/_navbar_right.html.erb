@@ -20,6 +20,13 @@
         <% elsif current_user.has_role? :student %>
 
         <% elsif current_user.has_role? :lecturer %>
+        
+        <% elsif current_user.has_role? :admin %>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    admin
+                </a>
+            </li>
 
         <%end%>
     <% end %>
