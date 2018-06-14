@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   rolify
+  
+    def self.ransackable_attributes auth_object = nil
+       ["email"] 
+    end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

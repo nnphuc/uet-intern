@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @lastests = Thuctap.select([:partner_info_id,:title,:id,"max(created_at)"]).group(:partner_info_id).limit(5)
+    @page = params[:page]
     @thuctaps = Thuctap.all.order("created_at DESC").page @page
   end
 
@@ -12,6 +13,17 @@ class HomeController < ApplicationController
   end
 
   def thongbao
+  end
+
+  def search
+    @q = Thuctap.ransack(params[:q])
+    @thuctaps = @q.result(distinct:true)
+    respond_to do |format|
+    format.html
+    format.json{
+        render :json => @thuctaps.to_json
+    }
+    end
   end
 
   def congviec
