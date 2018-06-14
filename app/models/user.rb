@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  rolify
-  
+    enum role: {student:0,partner:1,lecturer:2,admin:3}
     def self.ransackable_attributes auth_object = nil
        ["email"] 
     end
@@ -22,6 +21,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+
+
   validates :email, presence: true
   validates :password,presence: true
 
@@ -33,6 +34,10 @@ class User < ApplicationRecord
   # Unfollows a user.
   def unfollow(other_user)
     following.delete(other_user)
+  end
+
+  def has_role? r
+    role.to_sym==r
   end
 
   # Returns true if the current user is following the other user.

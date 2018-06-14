@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612043013) do
+ActiveRecord::Schema.define(version: 20180614160239) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20180612043013) do
     t.string "diachi"
   end
 
+  create_table "msgs", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.string "title"
+    t.string "content"
+    t.string "document_file_name"
+    t.string "document_content_type"
+    t.integer "document_file_size"
+    t.datetime "document_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "partner_infos", force: :cascade do |t|
     t.integer "user_id"
     t.string "contact"
@@ -50,17 +63,6 @@ ActiveRecord::Schema.define(version: 20180612043013) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "resource_type"
-    t.integer "resource_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["name"], name: "index_roles_on_name"
-    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "student_fixed_infos", force: :cascade do |t|
@@ -111,6 +113,7 @@ ActiveRecord::Schema.define(version: 20180612043013) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "role", default: 0
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -124,14 +127,6 @@ ActiveRecord::Schema.define(version: 20180612043013) do
     t.boolean "updated", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.index ["role_id"], name: "index_users_roles_on_role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end

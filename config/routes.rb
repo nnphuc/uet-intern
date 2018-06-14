@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :msgs
   resources :follows,only: [:create, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :thuctaps, path: "thuctap"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get "/congviec", to:"home#congviec"
   get "/thongbao", to:"home#thongbao"
   get "/myprofile",to: "home#myprofile"
+  get "/search", to:"home#search"
   
   get "/partner/:id/thuctap", to: "partner/thuctap#index"
   

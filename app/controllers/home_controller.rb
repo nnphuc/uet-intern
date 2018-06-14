@@ -17,11 +17,20 @@ class HomeController < ApplicationController
 
   def search
     @q = Thuctap.ransack(params[:q])
-    @thuctaps = @q.result(distinct:true)
+    @thuctaps = @q.result(distinct:true).limit(5)
+    results =[]
+
+    @thuctaps.each do |t|
+        results << {
+            title: t.title.truncate(30),
+            logo: t.partner_info.logo.url(:thumb),
+            url: "/thuctap/#{t.id}"
+        }
+    end
     respond_to do |format|
     format.html
     format.json{
-        render :json => @thuctaps.to_json
+        render :json => results.to_json
     }
     end
   end
@@ -38,8 +47,8 @@ class HomeController < ApplicationController
   def viewprofile
 
     @user = User.find_by id:params[:id]
-    s = params[:role].to_sym
-    if @user.nil? || !(@user.has_role? s) then
+   
+    if @user.nil? then
         render "/error/not_found"
     end
 

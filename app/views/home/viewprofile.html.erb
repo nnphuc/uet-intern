@@ -1,3 +1,18 @@
+
+<% if current_user && @user && current_user!=@user %>
+<div class="row">
+<div class="mx-auto">
+                <%if current_user !=@user%>
+                    
+                    <%= render "/users/follow_form" %> 
+                    
+                <% end%>
+</div>
+</div>
+<hr>          
+<%end%>
+
+
 <% if @user.has_role? :student %>
     <%= render :partial => "/home/profile_student",locals: {:user => @user} %>
 <%elsif @user.has_role? :lecturer %>

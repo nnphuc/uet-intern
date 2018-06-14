@@ -1,5 +1,4 @@
 
-
 <% if user.partner_info %>
     <% info = user.partner_info %>
        
@@ -13,13 +12,7 @@
                     <strong>phone: </strong><span><%= info.dienthoai %></span><br>
                     <strong>email: </strong><span><%= info.contact%></span>
                 </address>
-                
-                <%if current_user !=user%>
-                    
-                    <%= render "/users/follow_form" %> 
-                    
-                <% end%>
-                   
+            
             </div>
             
         </div>

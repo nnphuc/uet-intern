@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @msg.sender_id %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @msg.receiver_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @msg.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @msg.content %>
+</p>
+<p>
+<% if @msg.document.exists? %>
+
+    <a href="<%=@msg.document.url%>">download</a>
+<% end%>
+</p>
+<%if @msg.sender == current_user %>
+<%= link_to 'Edit', edit_msg_path(@msg) %> |
+<% end %>
+<%= link_to 'Back', msgs_path %>

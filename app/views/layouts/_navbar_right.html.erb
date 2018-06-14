@@ -1,8 +1,11 @@
 
 <ul class="navbar-nav mx-auto">
     <!-- custom link ------------>
-
+    
     <% if current_user %>
+    <li class="nav-item">
+        <a class="nav-link" href="<%= msgs_path%>">message<a>
+    </li>
         <% if current_user.has_role? :partner %>
              <li class="nav-item">
                 <a class="nav-link" href="/partner/<%= current_user.id %>/thuctap" title="danh sách thực tp">
