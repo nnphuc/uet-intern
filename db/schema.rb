@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20180614081230) do
     t.integer "receiver_id"
     t.integer "sender_id"
     t.integer "object_id"
+
+  create_table "msgs", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.string "title"
+    t.string "content"
+    t.string "document_file_name"
+    t.string "document_content_type"
+    t.integer "document_file_size"
+    t.datetime "document_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -127,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180614081230) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "role", default: 0
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

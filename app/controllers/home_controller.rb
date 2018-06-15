@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @lastests = Thuctap.select([:partner_info_id,:title,:id,"max(created_at)"]).group(:partner_info_id).limit(5)
+    @page = params[:page]
     @thuctaps = Thuctap.all.order("created_at DESC").page @page
   end
 
@@ -18,6 +19,26 @@ class HomeController < ApplicationController
   def thongbao
   end
 
+  def search
+    @q = Thuctap.ransack(params[:q])
+    @thuctaps = @q.result(distinct:true).limit(5)
+    results =[]
+
+    @thuctaps.each do |t|
+        results << {
+            title: t.title.truncate(30),
+            logo: t.partner_info.logo.url(:thumb),
+            url: "/thuctap/#{t.id}"
+        }
+    end
+    respond_to do |format|
+    format.html
+    format.json{
+        render :json => results.to_json
+    }
+    end
+  end
+
   def congviec
   end
 
@@ -29,8 +50,8 @@ class HomeController < ApplicationController
 
   def viewprofile
     @user = User.find_by id:params[:id]
-    s = params[:role].to_sym
-    if @user.nil? || !(@user.has_role? s) then
+   
+    if @user.nil? then
         render "/error/not_found"
     end
   end

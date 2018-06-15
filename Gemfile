@@ -23,6 +23,7 @@ gem "rails_admin_rollincode"
 gem "rails_admin", "~>1.2"
 gem "redcarpet"
 gem "kaminari"
+gem 'ransack'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

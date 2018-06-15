@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   enum role: {student: 0, partner: 1, lecturer: 2, admin: 3}
+    def self.ransackable_attributes auth_object = nil
+       ["email"]
+    end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,6 +26,9 @@ class User < ApplicationRecord
   has_many :messages, foreign_key: :user_id, dependent: :destroy
   has_many :message_senders, class_name: Conversation.name, foreign_key: :sender_id, dependent: :destroy
   has_many :message_receivers, class_name: Conversation.name, foreign_key: :receiver_id, dependent: :destroy
+
+
+
   validates :email, presence: true
   validates :password,presence: true
 
@@ -37,6 +43,10 @@ class User < ApplicationRecord
   # Unfollows a user.
   def unfollow(other_user)
     following.delete(other_user)
+  end
+
+  def has_role? r
+    role.to_sym==r
   end
 
   # Returns true if the current user is following the other user.

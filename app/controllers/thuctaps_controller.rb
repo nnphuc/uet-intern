@@ -18,6 +18,9 @@ class ThuctapsController < ApplicationController
 
   # GET /thuctaps/new
   def new
+    if !current_user || !(current_user.has_role?:partner)
+        redirect_to thuctaps_path
+    end
     @thuctap = Thuctap.new
     @thuctap.partner_info = current_user.partner_info
   end
@@ -68,7 +71,7 @@ class ThuctapsController < ApplicationController
   private
     def require_permission
         thuctap = Thuctap.find(params[:id])
-        if current_user != thuctap.partner_info.user
+        if !current_user || current_user != thuctap.partner_info.user
             redirect_to(thuctap_path(thuctap))
             #Or do something else here
         end

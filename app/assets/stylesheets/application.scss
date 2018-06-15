@@ -25,6 +25,7 @@ body {
 
 #header nav li > a,.menu  li a {
     font-size: 14px;
+    min-height: 100%;
     font-family: Helvetica, Arial, sans-serif;
 
 }
@@ -124,6 +125,7 @@ a:hover {
 }
 html {
     position: relative;
+    min-height: 100%;
 }
 
 #navbarSupportedContent {
@@ -200,6 +202,7 @@ label.is-invalid {
 
 #page-body {
     min-width: 1000px;
+    min-height: 100%;
     background-color:#F1F1F1;
     a:link,a:visited {
         color: rgb(0, 123, 255);

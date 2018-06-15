@@ -28,8 +28,10 @@
                 </p>
             </div>
             <div class="col-sm-2">
-                <a class="btn btn-dark text-primary" href="<%=url%>">
-                    Xem ngay
+                <a  href="<%=url%>">
+                    <button class="btn btn-success text-dark">
+                        Xem ngay
+                    </button>
                 </a>
             </div>
             
@@ -44,7 +46,7 @@
                         <i class="fa fa-history"></i> <%= time_ago_in_words(thuctap.created_at) %> ago</span>
                     </small>
                     <br>
-                    |<span class="fa fa-calendar">
+                    <span class="fa fa-calendar">
                     </span> <%= thuctap.endtime.strftime("%b %d,%Y") %> |
                     <span class="fa fa-tags">
                     </span>Tags:

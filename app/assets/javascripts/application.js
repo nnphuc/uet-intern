@@ -18,29 +18,28 @@
 //= require_tree .
 
 
-function sticky_header() {
-    var scrollPosition = $(this).scrollTop();
-    var el = $("#navbar-header");
-    var next = el.next();
-    if (scrollPosition >= 50) {
-        $("#navbar-header").removeClass("sticky");
-        $("#navbar-header").addClass("fixed");
-        next.addClass("mt-50");
-    }else{
-        $("#navbar-header").removeClass("fixed");
-        $("#navbar-header").addClass("sticky");
-        next.removeClass("mt-50");
-    }
-}
-$(window).on('scroll', sticky_header);
-function hightlight_active( ) {
-    var loc = window.location.pathname;
-    $("#header-type-option li a").click(function(e){
-        $("#header-type-select").html($(this).text()+' <span class="caret"> </span>');
-    })
-    $('#menu-extra').find('a').each(function() {
-        $(this).parent().toggleClass('active', $(this).attr('href') == loc);
-    });
+function create(val) {
+    let div = document.createElement("div");
+    let left = document.createElement("div");
+    let right=document.createElement("div");
+    let img = document.createElement("img");
+    let p = document.createElement("p");
+    img.style.width="30px";
+    img.style.height="30px";
+    img.src=val.logo;
+    left.appendChild(img);
+    p.appendChild(document.createTextNode(val.title));
+    right.appendChild(p);
+    right.className="py-auto";
+    left.className="mr-3";
+    div.appendChild(left);
+    div.appendChild(right);
+    div.className="row";
+    let a = document.createElement("a");
+    a.href=val.url;
+    a.className="dropdown-item";
+    a.appendChild(div);
+    return a;
 }
 
 
@@ -109,3 +108,41 @@ function handle() {
 $(document).ready(function() {
    $("#follow-unfollow").click(handle);
 })
+
+function ajax_search(){
+    var lastest_query="";
+    $("#header-search-input").on("input",function(){
+        var value = $(this).val().trim();
+        if(value == lastest_query) return;
+        lastest_query = value;
+        if(!value) return;
+
+        var div_dropdown = document.querySelector("#header-search-result");
+        //
+        $.get({
+            url:"/search.json",
+            data:{"q[title_cont]":value},
+            success: function(result) {
+                div_dropdown.innerHTML="";
+                //console.log(result);
+                result.forEach(function(val,index){
+                    console.log(val);
+
+
+                    div_dropdown.appendChild(create(val));
+                });
+            },
+            fail: function(){
+                console.log("fail");
+            },
+
+        });
+
+    });
+
+    $("#header-search-form").on("submit",function(){
+        return false;
+    });
+};
+$(document).ready(ajax_search);
+$(document).on("page:load",ajax_search);
